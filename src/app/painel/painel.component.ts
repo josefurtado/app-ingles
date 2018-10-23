@@ -30,21 +30,31 @@ export class PainelComponent implements OnInit {
   }
 
   verificarResposta(): void {
-    if(this.rodadaFrase.frasePtBr == this.resposta){
-      this.rodada++
-      this.progresso = this.progresso + (100 / this.frases.length)
-      this.atualizaRodada()
-    } else {
-      this.tentativas--
+    if(this.rodadaFrase.frasePtBr == this.resposta)
+    {
+      this.rodada++;
+      this.progresso = this.progresso + (100 / this.frases.length);
 
-      if(this.tentativas === -1){
-        alert('Você perdeu todas as tentativas')
+      if(this.rodada === 4)
+      {
+        alert('Concluiu as traduções com sucesso!');
+      }
+
+      this.atualizaRodada();
+
+    } else {
+      this.tentativas--;
+
+      if(this.tentativas === -1)
+      {
+        alert('Você perdeu todas as tentativas');
       }
     }
   }
 
-  atualizaRodada(): void {
-    this.rodadaFrase = this.frases[this.rodada]
-    this.resposta = ''
+  atualizaRodada(): void 
+  {
+    this.rodadaFrase = this.frases[this.rodada];
+    this.resposta = '';
   }
 }
